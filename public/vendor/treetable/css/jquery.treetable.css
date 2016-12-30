@@ -1,0 +1,39 @@
+table.treetable span.indenter {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+
+  /* Disable text selection of nodes (for better D&D UX) */
+  user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+
+  /* Force content-box box model for indenter (Bootstrap compatibility) */
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+
+  width: 19px;
+}
+
+table.treetable span.indenter a {
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  text-decoration: none;
+  width: 19px;
+}
+
+
+.tree_table .default_node, .tree_table .default_active_node {width:16px;height:16px;border: medium none; margin: 0; padding: 0;display: inline-block;}
+.tree_table .default_active_node {cursor: pointer;}
+.tree_table .default_leaf{background:url(./allbgs.png) no-repeat -16px 0px;width:16px;}
+.tree_table .default_last_leaf{background:url(./allbgs.png) no-repeat -64px 0px;width:16px;}
+.tree_table .default_vertline{background:url(./allbgs.png) no-repeat -32px 0px;width:16px;}
+.tree_table .default_open, .tree_table .default_hover_open{background:url(./allbgs.png) no-repeat 0px 0px;width:16px;}
+.tree_table .default_shut, .tree_table .default_hover_shut{background:url(./allbgs.png) no-repeat -48px 0px;width:16px;}
+.tree_table .default_last_shut, .tree_table .default_hover_last_shut{background:url(./allbgs.png) no-repeat -96px 0px;width:16px;}
+.tree_table .default_last_open, .tree_table .default_hover_last_open{background:url(./allbgs.png) no-repeat -112px 0px;width:16px;}
