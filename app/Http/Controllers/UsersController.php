@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
+//    protected $users;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +25,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
-        return view('users/index');
+        $users = $this->repository->get();
+        return view('users.index',compact('users'));
     }
 
     /**
@@ -52,7 +61,8 @@ class UsersController extends Controller
     public function show($id)
     {
         //
-        return view('users.show');
+        $user = $this->repository->find($id);
+        return view('users.show',compact('user'));
     }
 
     /**
@@ -64,6 +74,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
+        $user = $this->repository->find($id);
+        return view('users.edit',compact('user'));
     }
 
     /**
@@ -73,9 +85,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+//        $this->validate($request, [
+//            'username' => 'required|max:255',
+//            'email' => 'required',
+//            'password' => 'required|min:8',
+//        ]);
+
+        $this->repository->update($request->input(),$id);
+        return redirect(route('users.index'));
     }
 
     /**

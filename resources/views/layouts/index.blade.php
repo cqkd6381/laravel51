@@ -12,6 +12,7 @@
 </head>
 <body>
     <div class="container">
+        @include('errors.error')
         @yield('content')
     </div>
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
