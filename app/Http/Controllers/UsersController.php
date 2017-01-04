@@ -46,10 +46,31 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         //
-        dd($request->input());
+        $request->flash();
+//        $url = $request->url();
+//        $uri = $request->path();
+//        $method = $request->method();
+//        if ($request->is('users')) {
+//            echo 'yes'.'<br>';
+//        }
+//
+//        var_dump($url);
+//        echo '<br>';
+//        var_dump($uri);
+//        echo '<br>';
+//        var_dump($method);
+//        echo '<br>';
+//        print_r($request->input('name','default_name'));
+//        echo '<br>';
+//        var_dump( $request->all());
+//        echo '<br>';
+//        var_dump($request->except(['username', 'password']));
+//        echo '<br>';
+//        dd($request->username);
+        return redirect(route('users.create'));
     }
 
     /**

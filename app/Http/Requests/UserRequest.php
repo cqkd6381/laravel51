@@ -24,7 +24,7 @@ class UserRequest extends Request
     public function rules()
     {
         return [
-            'username' => 'required|max:255',
+            'username' => 'required|max:255|min:3',
             'email' => 'required|email|unique:users,email,'.$this->route('users'),
             'password' => 'required|min:8',
         ];
@@ -39,6 +39,7 @@ class UserRequest extends Request
     {
         return [
             'username.required' => '用户名是必填的',
+            'username.min' => '用户名不得少于3位',
             'email.required'  => '邮箱是必填的',
             'email.email'=>'邮箱格式错误',
             'password.required'  => '密码是必填的',
