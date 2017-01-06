@@ -3,8 +3,8 @@
 // use Illuminate\Http\Response;
 Route::get('/', function () {
     // return view('welcome');
-    return view('welcome', ['name' => 'Victoriffffffffffffffffa']);
-    return view('welcome')->with('name', 'Victoria');
+    return view('profile');
+    // return view('welcome')->with('name', 'Victoria');
     // return (new Response('assssdf', 200))->header('Content-Type', 'text/html')->withCookie('sss', 'value');
     // return response()->view('users.create')->header('Content-Type', 'text/html');
     // return response()->json(['name' => 'Abigail', 'state' => 'CA']);

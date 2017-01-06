@@ -16,7 +16,7 @@ class UsersController extends Controller
     public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
-        view()->share('share', 'value');
+        // view()->share('share', 'value');
     }
 
     /**

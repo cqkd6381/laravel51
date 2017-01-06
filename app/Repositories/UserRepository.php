@@ -31,5 +31,9 @@ class UserRepository
         ]);
     }
 
+    public function count()
+    {
+        return $this->model->count();
+    }
 
 }

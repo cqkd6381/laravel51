@@ -12,8 +12,10 @@
 </head>
 <body>
     <div class="container">
-        @include('errors.error')
+        @include('vendor.kernel.alert',['include' => 'data'])
         @yield('content')
+        @each('vendor.kernel.each',[1,2,3],'each')
+        @datetime('222')
     </div>
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
