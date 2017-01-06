@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-
+use Illuminate\Http\Response;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +16,7 @@ class UsersController extends Controller
     public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
+        view()->share('share', 'value');
     }
 
     /**
@@ -25,6 +26,9 @@ class UsersController extends Controller
      */
     public function index()
     {
+        //  $response = new \Illuminate\Http\Response('Hello World');
+        // $response->withCookie(cookie('name', 'value', 3600));
+        // dd($response);
         $users = $this->repository->get();
         return view('users.index',compact('users'));
     }
@@ -37,6 +41,7 @@ class UsersController extends Controller
     public function create()
     {
         //
+
         return view('users/create');
     }
 
@@ -69,7 +74,16 @@ class UsersController extends Controller
 //        echo '<br>';
 //        var_dump($request->except(['username', 'password']));
 //        echo '<br>';
-//        dd($request->username);
+        if ($request->hasFile('file')) {
+            if ($request->file('file')->isValid()) {
+                //
+                // dd($request->file('file'));
+                $request->file('file')->move('./vendor/project/images/', time().'.png');
+            }
+        }else{
+            return back()->withInput();
+        }
+        dd($request->input());
         return redirect(route('users.create'));
     }
 
@@ -113,9 +127,8 @@ class UsersController extends Controller
 //            'email' => 'required',
 //            'password' => 'required|min:8',
 //        ]);
-
         $this->repository->update($request->input(),$id);
-        return redirect(route('users.index'));
+        return redirect(route('users.index'))->with('status', 'Success updated!');
     }
 
     /**
