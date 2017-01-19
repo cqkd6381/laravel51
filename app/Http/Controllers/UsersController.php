@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Repositories\UserRepository;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Http\Requests\UserRequest;
-use App\Http\Controllers\Controller;
+use App\Repositories\UserRepositoryInterface;
 
 class UsersController extends Controller
 {
-//    protected $users;
 
-    public function __construct(UserRepository $repository)
+    public function __construct(UserRepositoryInterface $repository)
     {
         $this->repository = $repository;
         // view()->share('share', 'value');
@@ -29,8 +24,12 @@ class UsersController extends Controller
         //  $response = new \Illuminate\Http\Response('Hello World');
         // $response->withCookie(cookie('name', 'value', 3600));
         // dd($response);
-        $users = $this->repository->get();
+        // $users = $this->repository->get();
+        // $users = User::all();
+        $users = $this->repository->selectAll();
+        // dd($users);
         return view('users.index',compact('users'));
+        // return view('users.index',compact('users'));
     }
 
     /**
