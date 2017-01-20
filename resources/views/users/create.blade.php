@@ -4,7 +4,7 @@
 
 @section('content')
     <h2>添加用户</h2>
-    <form class="form-horizontal" role="form" action="{{route('users.store')}}" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" role="form" action="{{route('users.store')}}" method="post">
         {{ csrf_field() }}
         <div class="form-group">
             <label for="inputUsername3" class="col-sm-2 control-label">Username</label>
@@ -24,12 +24,12 @@
                 <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password" value="{{ old('password') }}">
             </div>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="inputPassword4" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-10">
                 <input type="file" class="form-control" id="inputPassword4" name="file" value="{{ old('file') }}">
             </div>
-        </div>
+        </div> -->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">

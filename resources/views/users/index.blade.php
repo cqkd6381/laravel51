@@ -21,7 +21,7 @@
                 <td>
                     <a href="{{route('users.show',['id'=>$user->id])}}">详情</a>
                     <a href="{{route('users.edit',['id'=>$user->id])}}">编辑</a>
-                    <a href="{{route('users.destroy',['id'=>$user->id])}}">删除</a>
+                    <a href="{{route('users.destroyd',['id'=>$user->id])}}">删除</a>
                 </td>
             </tr>
         @endforeach

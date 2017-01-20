@@ -10,6 +10,7 @@ class UsersController extends Controller
 
     public function __construct(UserRepositoryInterface $repository)
     {
+        // parent::__construct();
         $this->repository = $repository;
         // view()->share('share', 'value');
     }
@@ -52,38 +53,9 @@ class UsersController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //
-        $request->flash();
-//        $url = $request->url();
-//        $uri = $request->path();
-//        $method = $request->method();
-//        if ($request->is('users')) {
-//            echo 'yes'.'<br>';
-//        }
-//
-//        var_dump($url);
-//        echo '<br>';
-//        var_dump($uri);
-//        echo '<br>';
-//        var_dump($method);
-//        echo '<br>';
-//        print_r($request->input('name','default_name'));
-//        echo '<br>';
-//        var_dump( $request->all());
-//        echo '<br>';
-//        var_dump($request->except(['username', 'password']));
-//        echo '<br>';
-        if ($request->hasFile('file')) {
-            if ($request->file('file')->isValid()) {
-                //
-                // dd($request->file('file'));
-                $request->file('file')->move('./vendor/project/images/', time().'.png');
-            }
-        }else{
-            return back()->withInput();
-        }
-        dd($request->input());
-        return redirect(route('users.create'));
+        // dd($request->input());
+        $this->repository->create($request->input());
+        return redirect(route('users.index'));
     }
 
     /**
@@ -136,8 +108,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyd($id)
     {
-        //
+        $this->repository->destroy($id);
+        return redirect(route('users.index'));
     }
 }

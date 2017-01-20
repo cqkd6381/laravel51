@@ -5,9 +5,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <title>Echarts test</title>
 </head>
 <body>
+    <button class="btn btn-primary">{{$test1}}--{{$test2}}--{{$test3}}</button>
+    <hr>
     <div id="main" style="width: 2000px;height:500px;"></div>
 
     <script src="http://cdn.bootcss.com/echarts/3.3.2/echarts.common.min.js"></script>

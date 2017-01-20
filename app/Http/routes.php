@@ -14,7 +14,7 @@ Route::get('/', function () {
 });
 
 Route::resource('users','UsersController');
-
+Route::get('destroyd/{id}','UsersController@destroyd')->name('users.destroyd')->where('id', '[0-9]+');
 Route::resource('test','TestController');
 
 //$router->get('profile/{user}', function(App\User $user) {

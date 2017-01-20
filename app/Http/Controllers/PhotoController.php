@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 class PhotoController extends Controller
 {
 
-    public function getIndex()
+    public function getHomeIndex()
     {
         //
-        echo 'getIndex';
+        echo 'getHomeIndex';
     }
 
     public function getShow()

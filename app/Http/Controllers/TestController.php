@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 class TestController extends Controller
 {
@@ -16,8 +15,13 @@ class TestController extends Controller
      */
     public function index()
     {
-        //
-        return view('test/index');
+        /*
+        *传递数据到视图的三种方式：
+        *1.数组方式,如view('test/index',['test1'=>'test11'])
+        *2.with()函数方式，如with('test2','test22')
+        *3.with加变量名方式，如withTest3('test33')
+        */
+        return view('test/index',['test1'=>'test11'])->with('test2','test22')->withTest3('test33');
     }
 
     /**
